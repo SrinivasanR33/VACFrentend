@@ -56,6 +56,7 @@ const Messages = ({ chosenChatDetails, messages }) => {
               content={message.content}
               username={message.author.username}
               sameAuthor={sameAuthor}
+              headerName={chosenChatDetails?.name}
               date={convertDateToHumanReadable(
                 new Date(message.date),
                 "dd/mm/yy"

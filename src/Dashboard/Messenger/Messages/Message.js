@@ -16,6 +16,8 @@ const AvatarContainer = styled("div")({
 const MessageContainer = styled("div")({
   display: "flex",
   flexDirection: "column",
+  borderRadius: "5px",
+  padding:"3px 20px"
 });
 
 const MessageContent = styled("div")({
@@ -28,27 +30,58 @@ const SameAuthorMessageContent = styled("div")({
 });
 
 const SameAuthorMessageText = styled("span")({
-  marginLeft: "70px",
+  marginLeft: "0px",
+  borderRadius: "5px",
+  padding:"3px 20px",
+  marginTop:'10px'
 });
 
-const Message = ({ content, sameAuthor, username, date, sameDay }) => {
+const Message = ({
+  content,
+  sameAuthor,
+  headerName,
+  username,
+  date,
+  sameDay,
+}) => {
   if (sameAuthor && sameDay) {
     return (
-      <SameAuthorMessageContent>
-        <SameAuthorMessageText>{content}</SameAuthorMessageText>
+      <SameAuthorMessageContent
+        sx={{
+          display: "flex",
+          justifyContent: username === headerName ? "right" : "left",
+          
+        }}
+      >
+        <SameAuthorMessageText sx={{ 
+          background: username === headerName ? "#075e54" : "#72767d",
+          textAlign: username === headerName ? "right" : "left", 
+          }}>{content}</SameAuthorMessageText>
       </SameAuthorMessageContent>
     );
   }
 
   return (
-    <MainContainer>
-      <AvatarContainer>
+    <MainContainer
+      sx={{
+        justifyContent: username === headerName ? "right" : "left",
+      }}
+    >
+      {/* <AvatarContainer>
         <Avatar username={username} />
-      </AvatarContainer>
-      <MessageContainer>
-        <Typography style={{ fontSize: "16px", color: "white" }}>
+      </AvatarContainer> */}
+      <MessageContainer
+        sx={{
+          background: username === headerName ? "#075e54" : "#72767d",
+        }}
+      >
+        <Typography
+          style={{ fontSize: "16px", fontWeight: "bold",
+          textAlign: username === headerName ? "right" : "left", 
+          color: "white" }}
+        >
           {username}{" "}
-          <span style={{ fontSize: "12px", color: "#72767d" }}>{date}</span>
+          {/* <span style={{ fontSize: "12px", color: "#72767d" }}>{date}</span> */}
         </Typography>
         <MessageContent>{content}</MessageContent>
       </MessageContainer>
