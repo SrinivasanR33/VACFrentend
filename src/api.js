@@ -3,7 +3,7 @@ import { logout } from "./shared/utils/auth";
 
 const apiClient = axios.create({
   baseURL: "https://vacservice-api.onrender.com/api",
-  timeout: 1000,
+  // timeout: 1000,
 });
 
 apiClient.interceptors.request.use(
